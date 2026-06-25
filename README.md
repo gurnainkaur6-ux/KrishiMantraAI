@@ -393,7 +393,11 @@ KrishiMantraAI/
 ### Home Interface
 <img width="1902" height="942" alt="image" src="Screenshot 2026-06-25 171618.png" />
 
+<img width="780" height="925" alt="image" src="https://github.com/user-attachments/assets/fe318c06-a0c3-4b8f-ba5b-a98b00c5eebe" />
 
+<img width="632" height="956" alt="image" src="https://github.com/user-attachments/assets/8a59c263-0a52-4c76-95c6-539b2ebf7224" />
+<img width="665" height="843" alt="image" src="https://github.com/user-attachments/assets/e4594ba7-8425-4b99-a932-55181d5c6d59" />
+<img width="407" height="530" alt="image" src="https://github.com/user-attachments/assets/99223b19-c922-44c6-92ef-4ce63cdca53d" />
 
 # 🎥 Demo Video
 (https://youtu.be/-Glqo9Ng_RA?si=IwVvhqvHTib5qyze)
