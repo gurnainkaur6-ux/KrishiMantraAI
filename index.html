@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KrishiMitra AI: Indian Agriculture Multi-Agent Decision Support System. Get precise soil, weather, and pesticide recommendations.">
+    <title>KrishiMitra AI - Decision Support System</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-seedling brand-icon"></i>
+                <h2>KrishiMitra <span>AI</span></h2>
+            </div>
+            
+            <div class="memory-panel">
+                <div class="panel-header">
+                    <h3><i class="fa-solid fa-microchip"></i> Context Memory</h3>
+                    <button id="clear-memory-btn" title="Clear Memory"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+                <div class="memory-status">
+                    <div class="memory-item" data-field="state">
+                        <span>State:</span> <strong id="m-state" class="empty">Not Set</strong>
+                    </div>
+                    <div class="memory-item" data-field="district">
+                        <span>District:</span> <strong id="m-district" class="empty">Not Set</strong>
+                    </div>
+                    <div class="memory-item" data-field="soil_type">
+                        <span>Soil Type:</span> <strong id="m-soil_type" class="empty">Not Set</strong>
+                    </div>
+                    <div class="memory-item" data-field="crop">
+                        <span>Crop:</span> <strong id="m-crop" class="empty">Not Set</strong>
+                    </div>
+                    <div class="memory-item" data-field="temperature">
+                        <span>Temp:</span> <strong id="m-temperature" class="empty">Not Set</strong>
+                    </div>
+                    <div class="memory-item" data-field="humidity">
+                        <span>Humidity:</span> <strong id="m-humidity" class="empty">Not Set</strong>
+                    </div>
+                    <div class="memory-item" data-field="rainfall">
+                        <span>Rainfall:</span> <strong id="m-rainfall" class="empty">Not Set</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <button id="open-settings-btn" class="btn btn-secondary">
+                    <i class="fa-solid fa-gear"></i> Gemini API Key
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>Agricultural Decision Support Dashboard</h1>
+                <div class="api-status-badge" id="api-status">
+                    <span class="status-indicator offline"></span>
+                    <span class="status-text">Offline Mode (Rule-Based)</span>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- Input Panel -->
+                <section class="card input-card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-sliders"></i> Field Parameters</h2>
+                    </div>
+                    <form id="parameters-form" class="parameters-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <input type="text" id="state" placeholder="e.g., Punjab" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="district">District</label>
+                                <input type="text" id="district" placeholder="e.g., Ludhiana" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="soil_type">Soil Type</label>
+                                <select id="soil_type" required>
+                                    <option value="" disabled selected>Select soil type</option>
+                                    <option value="Loamy">Loamy</option>
+                                    <option value="Alluvial">Alluvial</option>
+                                    <option value="Black Soil">Black Soil</option>
+                                    <option value="Red Soil">Red Soil</option>
+                                    <option value="Sandy Loam">Sandy Loam</option>
+                                    <option value="Sandy Soil">Sandy Soil</option>
+                                    <option value="Laterite Soil">Laterite Soil</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="crop">Crop</label>
+                                <select id="crop" required>
+                                    <option value="" disabled selected>Select crop</option>
+                                    <option value="Wheat">Wheat</option>
+                                    <option value="Rice">Rice</option>
+                                    <option value="Cotton">Cotton</option>
+                                    <option value="Maize">Maize</option>
+                                    <option value="Sugarcane">Sugarcane</option>
+                                    <option value="Groundnut">Groundnut</option>
+                                    <option value="Bajra (Pearl Millet)">Bajra (Pearl Millet)</option>
+                                    <option value="Tea">Tea</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="temperature">Temperature (°C)</label>
+                                <input type="number" id="temperature" placeholder="e.g., 28" min="-10" max="60" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="humidity">Humidity (%)</label>
+                                <input type="number" id="humidity" placeholder="e.g., 60" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="rainfall">Rainfall (mm)</label>
+                                <input type="number" id="rainfall" placeholder="e.g., 15" min="0" max="2000" required>
+                            </div>
+                        </div>
+
+                        <!-- Special pesticide safety text field to test guardrails -->
+                        <div class="form-group full-width safety-input-group">
+                            <label for="safety_notes">Pesticide Request / Special Instructions</label>
+                            <input type="text" id="safety_notes" placeholder="e.g., Request yellow rust pesticide treatment details. (Type 'double dose' or '10x' to trigger security check)">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Recommendations
+                        </button>
+                    </form>
+                </section>
+
+                <!-- Output Panel -->
+                <section class="card output-card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-chart-pie"></i> Multi-Agent Decision Reports</h2>
+                    </div>
+
+                    <!-- Security Alert Container -->
+                    <div id="security-alert" class="security-alert hidden">
+                        <div class="alert-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div class="alert-content">
+                            <h3>⚠️ CRITICAL SECURITY VIOLATION: UNSAFE DOSAGE DETECTED</h3>
+                            <p>Excessive pesticide application destroys crop systems and violates environmental laws. Consult local KVK authorities immediately.</p>
+                        </div>
+                    </div>
+
+                    <!-- Report Output Layout -->
+                    <div id="report-output" class="report-output">
+                        <!-- Soil Report -->
+                        <div class="report-section card-sub">
+                            <h3><i class="fa-solid fa-flask"></i> SOIL REPORT</h3>
+                            <div class="report-details">
+                                <p><strong>Crop 1:</strong> <span id="r-crop1">-</span></p>
+                                <p><strong>Crop 2:</strong> <span id="r-crop2">-</span></p>
+                                <p><strong>Organic:</strong> <span id="r-organic">-</span></p>
+                                <p><strong>NPK:</strong> <span id="r-npk">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Weather Report -->
+                        <div class="report-section card-sub">
+                            <h3><i class="fa-solid fa-cloud-sun-rain"></i> WEATHER REPORT</h3>
+                            <div class="report-details">
+                                <p><strong>Irrigation:</strong> <span id="r-irrigation">-</span></p>
+                                <p><strong>Alert:</strong> <span id="r-alert">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Pesticide Report -->
+                        <div class="report-section card-sub">
+                            <h3><i class="fa-solid fa-shield-virus"></i> PESTICIDE REPORT</h3>
+                            <div class="report-details">
+                                <p><strong>Dosage:</strong> <span id="r-dosage">-</span></p>
+                                <p><strong>Waiting Period:</strong> <span id="r-waiting_period">-</span></p>
+                                <p><strong>Safety:</strong> <span id="r-safety">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Final Recommendation -->
+                        <div class="report-section card-sub highlight">
+                            <h3><i class="fa-solid fa-square-check"></i> FINAL RECOMMENDATION</h3>
+                            <div class="report-details" id="r-final_recommendation">
+                                <p class="placeholder-text">Please submit the parameters form to generate final checklists.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Gemini Settings Modal -->
+    <div id="settings-modal" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-key"></i> Gemini API Settings</h2>
+                <button id="close-settings-btn" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Provide a Google Gemini API Key to enable real-time generative agents for custom agricultural actions. Keys are stored safely in your browser's local storage.</p>
+                <div class="form-group">
+                    <label for="api-key-input">Gemini API Key</label>
+                    <div class="input-with-icon">
+                        <input type="password" id="api-key-input" placeholder="AIzaSy...">
+                        <button id="toggle-key-visibility" class="icon-btn"><i class="fa-solid fa-eye"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="save-settings-btn" class="btn btn-primary">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Script -->
+    <script src="app.js"></script>
+</body>
+</html>
