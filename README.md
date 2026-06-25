@@ -396,7 +396,7 @@ KrishiMantraAI/
 
 
 # 🎥 Demo Video
-
+capstone_project.mp4
 
 
 #  Course Concepts Demonstrated
