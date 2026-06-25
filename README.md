@@ -391,7 +391,7 @@ KrishiMantraAI/
 # 📸 Screenshots
 
 ### Home Interface
-<img width="1902" height="942" alt="image" src="" />
+<img width="1902" height="942" alt="image" src="Screenshot 2026-06-25 171618.png" />
 
 
 
