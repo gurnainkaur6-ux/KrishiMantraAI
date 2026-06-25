@@ -391,10 +391,7 @@ KrishiMantraAI/
 # 📸 Screenshots
 
 ### Home Interface
-
-
-
-### Recommendation Output
+<img width="1902" height="942" alt="image" src="https://github.com/user-attachments/assets/9ed6a486-9e1e-4f2b-b008-5356738f42de" />
 
 
 
