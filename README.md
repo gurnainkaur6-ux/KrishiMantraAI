@@ -9,7 +9,7 @@ The project demonstrates key AI Agent concepts including Multi-Agent Systems, Ag
 
 ---
 
-# 🎯 Problem Statement
+# Problem Statement
 
 Indian farmers often face challenges such as:
 
@@ -31,13 +31,13 @@ KrishiMantra AI addresses these challenges through a unified AI-powered agricult
 
 ---
 
-# 💡 Why KrishiMantra AI?
+# Why KrishiMantra AI?
 
 Farmers often make critical farming decisions using fragmented information sources. KrishiMantra AI combines crop planning, weather intelligence, soil analysis, irrigation guidance, and pesticide safety into a single AI-powered system that helps farmers make better decisions while promoting sustainable agricultural practices.
 
 ---
 
-# 🌍 Social Impact
+# Social Impact
 
 KrishiMantra AI supports:
 
@@ -52,7 +52,7 @@ The project contributes toward smarter and safer agricultural practices for Indi
 
 ---
 
-# 🏗️ System Architecture
+# System Architecture
 
 ```text
                     Farmer
@@ -73,7 +73,7 @@ Agriculture MCP   Weather MCP   Safety Validation
 
 ---
 
-# 🤖 Multi-Agent System
+# Multi-Agent System
 
 The system consists of three specialized agents.
 
@@ -127,7 +127,7 @@ Outputs:
 
 ---
 
-# 🧠 Agent Skills
+#  Agent Skills
 
 KrishiMantra AI demonstrates specialized Agent Skills.
 
@@ -151,7 +151,7 @@ KrishiMantra AI demonstrates specialized Agent Skills.
 
 ---
 
-# 🔗 MCP-Style Integrations
+#  MCP-Style Integrations
 
 The project demonstrates MCP-inspired integrations for tool interoperability.
 
@@ -185,7 +185,7 @@ Used by:
 
 ---
 
-# 🧠 Context Memory
+#  Context Memory
 
 KrishiMantra AI maintains agricultural context across interactions.
 
@@ -229,7 +229,7 @@ The system automatically retains previously supplied information.
 
 ---
 
-# 🛡️ Security Guardrails
+#  Security Guardrails
 
 Before generating recommendations, the system validates pesticide-related inputs.
 
@@ -252,7 +252,7 @@ No further processing occurs.
 
 ---
 
-# 📋 Output Structure
+#  Output Structure
 
 The assistant generates four structured sections.
 
@@ -286,7 +286,7 @@ A consolidated recommendation generated from all participating agents.
 
 ---
 
-# 🧪 Evaluation
+#  Evaluation
 
 The system was tested using multiple agricultural scenarios across different Indian states and soil types.
 
@@ -309,7 +309,7 @@ Evaluation Criteria:
 
 ---
 
-# 💻 Technology Stack
+#  Technology Stack
 
 | Component | Technology |
 |------------|------------|
@@ -323,7 +323,7 @@ Evaluation Criteria:
 
 ---
 
-# 🚀 Installation
+#  Installation
 
 Clone Repository
 
@@ -346,7 +346,7 @@ GEMINI_API_KEY=YOUR_API_KEY
 
 ---
 
-# ▶️ Run Application
+#  Run Application
 
 ```bash
 streamlit run app.py
@@ -402,7 +402,7 @@ KrishiMantraAI/
 
 
 
-# 🎓 Course Concepts Demonstrated
+#  Course Concepts Demonstrated
 
 ✅ Multi-Agent Systems
 
@@ -418,15 +418,7 @@ KrishiMantraAI/
 
 ✅ Real-World AI Application
 
----
 
-# 🏆 Kaggle Capstone Track
-
-**Track:** Agents for Good
-
-KrishiMantra AI was developed under the Agents for Good track, focusing on solving real-world agricultural challenges through AI-powered agents.
-
----
 
 # 📜 License
 
