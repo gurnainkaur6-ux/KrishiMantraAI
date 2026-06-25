@@ -398,6 +398,8 @@ KrishiMantraAI/
 <img width="632" height="956" alignment="center" alt="image" src="https://github.com/user-attachments/assets/8a59c263-0a52-4c76-95c6-539b2ebf7224" />
 <img width="665" height="843" alignment="center" alt="image" src="https://github.com/user-attachments/assets/e4594ba7-8425-4b99-a932-55181d5c6d59" />
 <img width="407" height="530" alignment="center" alt="image" src="https://github.com/user-attachments/assets/99223b19-c922-44c6-92ef-4ce63cdca53d" />
+<img width="1882" height="927" alt="image" src="https://github.com/user-attachments/assets/682c114a-3bf3-4c98-af98-b303a102dbac" />
+
 
 # 🎥 Demo Video
 (https://youtu.be/-Glqo9Ng_RA?si=IwVvhqvHTib5qyze)
